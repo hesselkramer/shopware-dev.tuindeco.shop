@@ -1,0 +1,12 @@
+#!/bin/bash
+sudo rm /etc/localtime
+sudo ln -s /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
+yum install -y httpd24
+yum install -y php73
+yum install -y mysql57-server
+yum install -y php73-mysqlnd
+yum install -y php73-mbstring
+service httpd restart
+sudo sed -i 's/AllowOverride none/AllowOverride All/g' /etc/httpd/conf/httpd.conf
+sudo sed -i 's/AllowOverride None/AllowOverride All/g' /etc/httpd/conf/httpd.conf
+sudo /etc/init.d/httpd restart 
