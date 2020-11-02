@@ -10,3 +10,8 @@ service httpd restart
 sudo sed -i 's/AllowOverride none/AllowOverride All/g' /etc/httpd/conf/httpd.conf
 sudo sed -i 's/AllowOverride None/AllowOverride All/g' /etc/httpd/conf/httpd.conf
 sudo /etc/init.d/httpd restart 
+sudo yum install -y php73-gd
+sudo yum install -y php73-mbstring
+sudo yum  install -y php73-intl
+sudo yum install -y php73-zip
+sudo /etc/init.d/httpd restart 
