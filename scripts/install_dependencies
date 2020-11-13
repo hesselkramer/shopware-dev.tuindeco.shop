@@ -7,10 +7,10 @@ yum install php72 php72-mysqlnd php72-imap php72-pecl-memcache php72-pecl-apcu p
 yum install mod24_ssl -y
 service httpd start
 yum install wget -y
-wget https://getcomposer.org/composer.phar
-php composer.phar #########################
-php composer.phar global require laravel/installer #############
+#wget https://getcomposer.org/composer.phar
+#php composer.phar #########################
+#php composer.phar global require laravel/installer #############
 
 
 
-sed 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html|' httpd.conf
+#sed 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/public|' httpd.conf
