@@ -1,8 +1,0 @@
-{
-  "views": [
-    "@Storefront",
-    "@PayPal",
-    "@PluginWildcardAndExplicit",
-    "@Plugins"
-  ]
-}

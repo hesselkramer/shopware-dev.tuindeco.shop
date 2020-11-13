@@ -1,7 +1,0 @@
-{
-  "views": [
-    "@Storefront",
-    "@InheritanceWithConfig",
-    "@Plugins"
-  ]
-}
