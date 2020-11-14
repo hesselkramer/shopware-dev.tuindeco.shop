@@ -1,5 +1,9 @@
 #!/bin/bash
 sudo yum update -y
+sudo rm /etc/localtime
+sudo ln -s /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
+yum install -y httpd24
+yum install -y php74
 sudo yum --enablerepo=remi,epel install httpd -y
 sudo yum install -y amazon-linux-extras
 sudo amazon-linux-extras enable php7.4
