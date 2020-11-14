@@ -1,20 +1,15 @@
 #!/bin/bash
-sudo rm /etc/localtime
-sudo ln -s /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
-yum -y update
-yum install httpd24 -y
-yum install php72 php72-mysqlnd php72-imap php72-pecl-memcache php72-pecl-apcu php72-gd php72-mbstring -y
-yum install mod24_ssl -y
-service httpd start
-yum install wget -y
-php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-HASH="$(wget -q -O - https://composer.github.io/installer.sig)"
-php -r "if (hash_file('SHA384', 'composer-setup.php') === '$HASH') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
-sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
-#wget https://getcomposer.org/composer.phar
-#php composer.phar #########################
-#php composer.phar global require laravel/installer #############
-
-
-
-#sed 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/public|' httpd.conf
+sudo yum update -y
+sudo yum --enablerepo=remi,epel install httpd -y
+sudo yum install -y amazon-linux-extras
+sudo amazon-linux-extras enable php7.4
+sudo yum clean metadata
+sudo yum -y install php php-{pear,cgi,common,curl,mbstring,gd,mysqlnd,gettext,bcmath,json,xml,fpm,intl,zip,imap}
+wget https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
+sudo rpm -ivh mysql57-community-release-el7-9.noarch.rpm
+sudo yum install mysql-server -y
+sudo systemctl start mysqld
+curl -sS https://getcomposer.org/installer | php
+mv -f composer.phar /usr/bin/composer
+chmod +x /usr/bin/composer
+sudo yum install git -y
